@@ -1,18 +1,15 @@
 export default {
   modules: {
     development: {
-      // Number of simulation cycles the road must fail the abandonment
-      // criteria before it has a chance of becoming abandoned
-      abandonThreshold: 10,     
-      // Probability of building being abandoned after it has met the
-      // abandonment criteria for 'delay' cycles
-      abandonChance: 0.25,  
-      // Number of days it takes to build a building
+      // Number of simulation cycles it takes to build a building
+      // Số vòng lặp cần thiết để hoàn thành xây dựng và chuyển sang developed.
       constructionTime: 3,
       // Probability of a building leveling up
-      levelUpChance: 0.05,
+      //ác suất một khu vực phát triển nâng cấp nếu nó chưa đạt mức độ tối đa.
+      levelUpChance: 0.025,
       // Probability of building being re-developed after it is no longer
       // meeting the abandonment criteria
+      //Xác suất chuyển từ undeveloped hoặc abandoned sang underConstruction hoặc developed
       redevelopChance: 0.25,         
     },
   },

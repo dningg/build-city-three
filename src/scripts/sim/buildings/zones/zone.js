@@ -3,9 +3,7 @@ import { DEG2RAD } from 'three/src/math/MathUtils.js';
 import { DevelopmentModule, DevelopmentState } from '../modules/development.js';
 import { Building } from '../building.js';
 
-/**
- * Represents a zoned building such as residential, commercial or industrial
- */
+//Represents a zoned building such as residential, commercial or industrial
 export class Zone extends Building {
   style = ['A', 'B', 'C'][Math.floor(3 * Math.random())];
   development = new DevelopmentModule(this);

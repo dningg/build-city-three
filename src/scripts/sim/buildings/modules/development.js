@@ -2,14 +2,12 @@ import config from '../../../config.js';
 import { SimModule } from './simModule.js';
 
 export const DevelopmentState = {
-  abandoned: 'abandoned',
   developed: 'developed',
   underConstruction: 'under-construction',
   undeveloped: 'undeveloped',
 };
 
 export class DevelopmentModule extends SimModule {
-  #abandonmentCounter = 0;
   #constructionCounter = 0;
   #level = 1;
   maxLevel = 3;
@@ -41,8 +39,6 @@ export class DevelopmentModule extends SimModule {
 
 
   simulate(city) {
-    this.#checkAbandonmentCriteria();
-
     switch (this.state) {
       case DevelopmentState.undeveloped:
         if (Math.random() < config.modules.development.redevelopChance) {
@@ -58,28 +54,10 @@ export class DevelopmentModule extends SimModule {
         }
         break;
       case DevelopmentState.developed:
-        if (this.#abandonmentCounter > config.modules.development.abandonThreshold) {
-          if (Math.random() < config.modules.development.abandonChance) {
-            this.state = DevelopmentState.abandoned;
-          }
-        } else {
-          if (this.level < this.maxLevel && Math.random() < config.modules.development.levelUpChance) {
-            this.level++;
-          }
-        }
-        break;
-      case DevelopmentState.abandoned:
-        if (this.#abandonmentCounter == 0) {
-          if (Math.random() < config.modules.development.redevelopChance) {
-            this.state = DevelopmentState.developed;
-          }
+        if (this.level < this.maxLevel && Math.random() < config.modules.development.levelUpChance) {
+          this.level++;
         }
         break;
     }
   }
-
-  #checkAbandonmentCriteria() {
-      this.#abandonmentCounter = 0;
-    }
-  
 }
