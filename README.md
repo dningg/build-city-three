@@ -33,7 +33,7 @@ npm run dev
 
 This command will start a development server at 127.0.0.1 on port 3000. Open a browser and go to http://127.0.0.1:3000 to view the project.
 
-### Bước 4: Build và Triển Khai
+### Bước 4: Build and Deploy
 
 To build the project for production, use the command:
 ```sh
